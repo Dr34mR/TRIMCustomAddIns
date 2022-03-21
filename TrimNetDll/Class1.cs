@@ -7,16 +7,15 @@ namespace TrimNetDll
     {
         public override void Setup(TrimMainObject newObject)
         {
-            if (newObject is not Record trimRec) return;
+            if (!(newObject is Record trimRec)) return;
 
             trimRec.TypedTitle = "GenericAddinTesting15";
         }
 
         public override void PostSave(TrimMainObject savedObject, bool itemWasJustCreated)
         {
-            Debugger.Launch();
             if (!itemWasJustCreated) return;
-            if (savedObject is not Record trimRec) return;
+            if (!(savedObject is Record trimRec)) return;
 
             trimRec.SetNotes("GenericSuccess", NotesUpdateType.PrependWithUserStamp);
             trimRec.Save();
